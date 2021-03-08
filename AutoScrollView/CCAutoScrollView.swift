@@ -88,7 +88,7 @@ open class CCAutoScrollView: UIView {
             return
         }
         timer = Timer.scheduledTimer(timeInterval: autoScrollTimeInterval, target: self, selector: #selector(autoScrollAction), userInfo: nil, repeats: true)
-        RunLoop.main.add(timer!, forMode: .defaultRunLoopMode)
+        RunLoop.main.add(timer!, forMode: RunLoop.Mode.default)
     }
     //MARK: - invalidate timer
     private func invalidateTimer() {
@@ -182,10 +182,10 @@ open class CCAutoScrollView: UIView {
             collectionView.isPagingEnabled = true
             self.addSubview(collectionView)
             
-            let topConstraint = NSLayoutConstraint(item: collectionView, attribute: .top, relatedBy: .equal, toItem: self, attribute: .top, multiplier: 1, constant: 0)
-            let botConstraint = NSLayoutConstraint(item: collectionView, attribute: .bottom, relatedBy: .equal, toItem: self, attribute: .bottom, multiplier: 1, constant: 0)
-            let leftConstraint = NSLayoutConstraint(item: collectionView, attribute: .left, relatedBy: .equal, toItem: self, attribute: .left, multiplier: 1, constant: 0)
-            let rightConstraint = NSLayoutConstraint(item: collectionView, attribute: .right, relatedBy: .equal, toItem: self, attribute: .right, multiplier: 1, constant: 0)
+            let topConstraint = NSLayoutConstraint(item: collectionView as Any, attribute: .top, relatedBy: .equal, toItem: self, attribute: .top, multiplier: 1, constant: 0)
+            let botConstraint = NSLayoutConstraint(item: collectionView as Any, attribute: .bottom, relatedBy: .equal, toItem: self, attribute: .bottom, multiplier: 1, constant: 0)
+            let leftConstraint = NSLayoutConstraint(item: collectionView as Any, attribute: .left, relatedBy: .equal, toItem: self, attribute: .left, multiplier: 1, constant: 0)
+            let rightConstraint = NSLayoutConstraint(item: collectionView as Any, attribute: .right, relatedBy: .equal, toItem: self, attribute: .right, multiplier: 1, constant: 0)
             NSLayoutConstraint.activate([topConstraint, botConstraint, leftConstraint, rightConstraint])
         }
     }
